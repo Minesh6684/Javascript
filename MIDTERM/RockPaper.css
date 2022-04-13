@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+
+body {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header{
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    max-width: 500px;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.start_game {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.start_game:hover{
+    color: white;
+    background-color: black;
+}
+
+.players, .start_game, header{
+    margin-bottom: 20px;
+}
+
+.player1 {
+    display: inline-block;
+    font-weight:normal;
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.player2 {
+    display: inline-block;
+    background-color:darkcyan;
+    font-weight:normal;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.rps{
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.rps {
+    display: grid;
+    grid-gap: 1;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+i {
+    font-size: 70px;
+    animation-name: choice-selection;
+    animation-duration: 1.5s;
+}
+
+@keyframes choice-selection {
+    from {
+        font-size: 70px;
+    }
+    to {
+        font-size: 72px;
+        box-shadow: 5px 5px 5px 5px grey;   
+    }
+}
+
+
+
+/* footer{
+    max-width: 500px;
+    margin: 20px auto;
+    border: 1px solid black;
+    background-color: rgb(63, 62, 62);
+    color: white;
+} */
