@@ -1,15 +1,12 @@
-const choices = document.querySelectorAll('.choice');
-const choices2sel = document.querySelectorAll('.choice1')
-console.log(typeof choices)
-console.log(choices2sel)
+const choices = document.querySelectorAll('.choice1');
 const score = document.getElementById('score');
 const result = document.getElementById('result');
-const restart = document.getElementById('restart');
+const restart = document.querySelector('#restart');
 const modal = document.querySelector('.modal');
-const player1Name = document.getElementById('player1_name')
-const player2Name = document.getElementById('player2_name')
-const player1Score = document.getElementById('player1_score')
-const player2Score = document.getElementById('player2_score')
+const player1Name = document.querySelector('.player1_name')
+const player2Name = document.querySelector('.player2_name')
+const player1Score = document.querySelector('.player1_score')
+const player2Score = document.querySelector('.player2_score')
 
 // const scoreboard = {
 //     player: 0,
@@ -18,14 +15,15 @@ const player2Score = document.getElementById('player2_score')
 
 // Computer As A Player
 function play(e){
+    console.log('else')
     restart.style.display = 'inline-block';
     const player1Choice = e.target.id;
     const player2Choice = selectionPlayer2();
     console.log(player1Choice)
     console.log(player2Choice)
     const winner = getWinner(player1Choice, player2Choice);
+    console.log(winner)
     showWinner(winner, player2Choice);
-    // console.log(player1Choice, player2Choice, winner)
 }
 
 // get computer's choice
@@ -39,12 +37,6 @@ function getComputerChoice(){
         return 'scissors';
     }
 }
-
-// get Player@ Choice
-function getPlayer2Choice(){
-    
-}
-
 
 
 //Get game winner
@@ -105,39 +97,28 @@ function showWinner(winner, player2Choice){
 function restartGame(){
     player1Score.innerHTML = 0;
     player2Score.innerHTML = 0;
-    player1Name.innerHTML  = 'Player';
-    player2Name.innerHTML = 'Computer';
+    player1Name.innerHTML  = 'Player1';
     score.innerHTML = 
-    `<p><span id="player1_name">${player1Name.innerHTML}</span>: <span id="player1_score">${player1Score.innerHTML}</span></p>
-    <p><span id="player2_name">${player2Name.innerHTML}</span>: <span id="player2_score">${player2Score.innerHTML}</span></p>`;
-    restart.style.display = 'none' 
-}
-
-//AddChoices For Player2
-// function addChoiceForPlayer2() {
-//     choices1.innerHTML = `
-//     <i id="rock" class="choice1 fas fa-hand-rock fa-5x"></i>
-//     <i id="paper" class="choice1 fas fa-hand-paper fa-5x"></i>
-//     <i id="scissors" class="choice1 fas fa-hand-scissors fa-5x"></i>
-//     `
-// }
-
-//Player2 Selection
-function imagePlay2(){
-    var image = document.createElement('img');
-    console.log(image)
-    // var image2 = document.getElementById('paper1');
-    // var image3 = document.getElementById('scissor1');
-    // image1.src = 'images/rock.png'
-    // image2.src = 'images/paper.png'
-    // image3.src = 'images/scissor.png'
+    `<p class="player1">
+    <span class="player1_name">Player1</span>
+    : 
+    <span class="player1_score">0</span>
+</p>
+<p class="player2">
+    <select class="player2_name">
+        <option value="notSelected">Choose Player2</option>
+        <option value="Computer">Computer</option>
+        // <option value="Player2"">Player2</option>
+    </select>
+    : 
+    <span class="player2_score">0</span>
+</p>`;
+    restart.style.display = 'none';
 }
 
 function selectionPlayer2(){
     var selectedValue = player2Name.options[player2Name.selectedIndex].value;
-    // while (selectedValue == "notSelected") {
-    // alert("Please select a Player2 type");
-    // }
+
     if(selectedValue == "Computer") {
        return getComputerChoice();
     }
@@ -159,7 +140,9 @@ function clearModal(e){
 
 function changeName() {
     const userName = prompt("enter your name: ");
-    player1Name.innerHTML = userName;
+    if (userName !== '') {
+        player1Name.innerHTML = userName;
+    }
 }
 
 //Event listeners

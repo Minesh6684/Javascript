@@ -1,27 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
-body{
-    font-family: 'Roboto', sans-serif;
+
+body {
+    font-family: 'Courier New', Courier, monospace;
     line-height: 1.6;
-    background: #fff;
-    color: #333;
+    background: black;
+    color: white;
 
 }
 .container{
-    max-width: 1100px;
+    /* max-width: 1100px;
     margin: auto;
-    overflow: hidden;
+    overflow: hidden; */
     padding: 0 2rem;
     text-align: center;
 }
 .restart-btn{
     display: none;
-    background: darkgrey;
+    background: white;
     padding: 0 2rem;
     font-size: 1rem;
     cursor: pointer;
@@ -41,7 +40,7 @@ body{
     margin-bottom: 1rem;
 }
 
-.player1:hover {
+.player1_name:hover {
     color: black;
 }
 
@@ -52,40 +51,64 @@ body{
     color:#fff;
 }
 
-.choices {
-    width: 45%;
-    float: left;
+.score p:first-child{
+    background: rgb(195, 93, 182);
+}
+.score p:last-child{
+    background: rgb(50, 170, 222);
+}
+
+.image_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        'player1_images player2_images';
+}
+
+.choices1 {
+    grid-area: player1_images;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        'rock paper scissor';
+    grid-gap: 10px;
 }
 
 .choices2 {
-    margin-left: 55%;
+    grid-area: player2_images;
 }
-.score p:first-child{
-    background: rgb(129, 74, 74);
+
+#rock  {
+    max-width: 150px;
+    grid-area: rock;
 }
-.score p:last-child{
-    background: black;
+
+#paper {
+    max-width: 150px;
+    grid-area: paper;
 }
-.choices, .choices2{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-    margin-top: 3rem;
-    text-align: center;
+
+#scissors {
+    max-width: 150px;
+    grid-area: scissor;
 }
-.choice{
+
+.choice1:hover{
     cursor: pointer;
 }
-.choice:hover{
+
+.choice1:hover{
     color: rgb(101, 35, 146);
 }
 @media(max-width: 700px){
-    .choice{
+    .choice1{
         font-size: 110px;
     }
 }
 @media(max-width: 500px){
-    .choice{
+    .choice1{
         font-size: 80px;
     }
 }
