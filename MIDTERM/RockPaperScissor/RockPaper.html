@@ -12,7 +12,6 @@
     <div class="container">
         <header class="header">
             <h1>Rock Paper Scissors</h1>
-            <button id="restart" class="restart-btn">Restart Game</button>
             <div id="score" class="score">
                 <p class="player1">
                     <span class="player1_name">Player1</span>
@@ -21,16 +20,17 @@
                 </p>
                 <p class="player2">
                     <select class="player2_name">
-                        <option value="notSelected">Choose Player2</option>
+                        <option value="notSelected">Choose Player2 type</option>
                         <option value="Computer">Computer</option>
-                        <!-- <option value="Player2">Player2</option> -->
+                        <option value="Player2">Player2</option>
                     </select>
                     : 
                     <span class="player2_score">0</span>
                 </p>
             </div>
         </header>
-        <h2>Make your Selection</h2>
+        
+        <div id="restart" class="restart-btn">Play Again</div>
         <div class="image_container">
             <div class="choices1">
                 <img src="images/rock_1.png" alt="" class="choice1" id="rock">

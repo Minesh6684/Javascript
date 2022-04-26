@@ -20,13 +20,14 @@ body {
 }
 .restart-btn{
     display: none;
-    background: white;
+    color: white;
     padding: 0 2rem;
     font-size: 1rem;
     cursor: pointer;
     outline: none;
     margin-bottom: 1rem;
-
+    border: 2px solid yellow;
+    border-radius: 5px;
 }
 .restart-btn:hover{
     background: black;
@@ -36,12 +37,9 @@ body {
     text-align:center;
     margin: 1rem 0;
 }
-.header h1{
-    margin-bottom: 1rem;
-}
 
 .player1_name:hover {
-    color: black;
+    color: rgb(186, 28, 128);
 }
 
 .score{
@@ -51,22 +49,14 @@ body {
     color:#fff;
 }
 
-.score p:first-child{
+/* .score p:first-child{
     background: rgb(195, 93, 182);
 }
 .score p:last-child{
     background: rgb(50, 170, 222);
-}
+} */
 
-.image_container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 
-        'player1_images player2_images';
-}
-
-.choices1 {
+/* .choices1 {
     grid-area: player1_images;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -74,11 +64,11 @@ body {
     grid-template-areas: 
         'rock paper scissor';
     grid-gap: 10px;
-}
+} */
 
-.choices2 {
+/* .choices2 {
     grid-area: player2_images;
-}
+} */
 
 #rock  {
     max-width: 150px;

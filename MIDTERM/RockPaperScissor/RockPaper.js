@@ -14,22 +14,26 @@ const player2Score = document.querySelector('.player2_score')
 // }
 
 // Computer As A Player
-function play(e){
-    console.log('else')
-    restart.style.display = 'inline-block';
-    const player1Choice = e.target.id;
-    const player2Choice = selectionPlayer2();
-    console.log(player1Choice)
-    console.log(player2Choice)
-    const winner = getWinner(player1Choice, player2Choice);
-    console.log(winner)
-    showWinner(winner, player2Choice);
+function play(e) {
+    if(player2Name.options[player2Name.selectedIndex].value === 'notSelected') {
+        alert('Please choose player2 type')
+    }
+    else if(player2Name.options[player2Name.selectedIndex].value === 'Computer') {
+        restart.style.display = 'inline-block';
+        const player1Choice = e.target.id;
+        const player2Choice = selectionPlayer2();
+        const winner = getWinner(player1Choice, player2Choice);
+        showWinner(winner, player2Choice);
+    }
+    else if(player2Name.options[player2Name.selectedIndex].value === 'Player2') {
+        
+    }
 }
 
 // get computer's choice
 function getComputerChoice(){
-    const rand = Math.random();
-    if(rand < 0.34){
+    const rand = Math.random(); //for generating ranadom number
+    if(rand < 0.34){ // assigning choices based on random number
         return 'rock';
     } else if(rand <= 0.57){
         return 'paper';
@@ -40,6 +44,7 @@ function getComputerChoice(){
 
 
 //Get game winner
+// Based on choices comparison of players, the function decides the winner
 function getWinner(p, c){
     if(p === c) {
         return 'draw';
@@ -63,6 +68,7 @@ function getWinner(p, c){
         }
     }
 }
+
 function showWinner(winner, player2Choice){
     if (winner === 'player'){
         //Inc player score
@@ -87,48 +93,50 @@ function showWinner(winner, player2Choice){
     }
     //show score
     score.innerHTML = `
-    <p><span id="player1_name">${player1Name.innerHTML}</span>: <span id="player1_score">${player1Score.innerHTML}</span></p>
-    <p><span id="player2_name">${player2Name.options[player2Name.selectedIndex].value}</span>: <span id="player2_score">${player2Score.innerHTML}</span></p>
-    `;
+    <p class="player1">
+        <span class="player1_name">${player1Name.innerHTML}</span>
+        : 
+        <span class="player1_score">${player1Score.innerHTML}</span>
+    </p>
+    <p class="player2">
+        <span class="player2_name">${player2Name.options[player2Name.selectedIndex].value}</span>
+        : 
+        <span class="player2_score">${player2Score.innerHTML}</span>
+    </p>`;
 
     modal.style.display = 'block';
 }
+
 //Restart Game
 function restartGame(){
     player1Score.innerHTML = 0;
     player2Score.innerHTML = 0;
     player1Name.innerHTML  = 'Player1';
+    //changing innerHTML of score and player name upon restart as it was in the beginning of the game
     score.innerHTML = 
     `<p class="player1">
-    <span class="player1_name">Player1</span>
-    : 
-    <span class="player1_score">0</span>
-</p>
-<p class="player2">
-    <select class="player2_name">
-        <option value="notSelected">Choose Player2</option>
-        <option value="Computer">Computer</option>
-        // <option value="Player2"">Player2</option>
-    </select>
-    : 
-    <span class="player2_score">0</span>
-</p>`;
+        <span class="player1_name">Player1</span>
+        : 
+        <span class="player1_score">0</span>
+    </p>
+    <p class="player2">
+        <select class="player2_name">
+            <option value="notSelected">Choose Player2</option>
+            <option value="Computer">Computer</option>
+            // <option value="Player2"">Player2</option>
+        </select>
+        : 
+        <span class="player2_score">0</span>
+    </p>`;
     restart.style.display = 'none';
 }
 
-function selectionPlayer2(){
+function selectionPlayer2() {
     var selectedValue = player2Name.options[player2Name.selectedIndex].value;
 
-    if(selectedValue == "Computer") {
+    if(selectedValue === "Computer") {
        return getComputerChoice();
     }
-    // else if (selectedValue == "Player2") {
-    //     for(let i=0; i<choices2sel.length; i++) {
-    //         console.log(choices2sel[i].src)
-    //     }
-        // console.log(choices2sel.innerHTML)
-        // return getPlayer2Choice();     
-    // }
 }
 
 //clear modal
