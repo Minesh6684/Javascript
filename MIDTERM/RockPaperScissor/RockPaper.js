@@ -7,6 +7,8 @@ const player1Name = document.querySelector('.player1_name')
 const player2Name = document.querySelector('.player2_name')
 const player1Score = document.querySelector('.player1_score')
 const player2Score = document.querySelector('.player2_score')
+let totalGamesPlayed = 0;
+let totalDraws = 0;
 
 // const scoreboard = {
 //     player: 0,
@@ -20,8 +22,11 @@ function play(e) {
     }
     else if(player2Name.options[player2Name.selectedIndex].value === 'Computer') {
         restart.style.display = 'inline-block';
+        modal.style.display = 'block';
         const player1Choice = e.target.id;
+        console.log(player1Choice)
         const player2Choice = selectionPlayer2();
+        console.log(player2Choice)
         const winner = getWinner(player1Choice, player2Choice);
         showWinner(winner, player2Choice);
     }
@@ -69,26 +74,30 @@ function getWinner(p, c){
     }
 }
 
-function showWinner(winner, player2Choice){
+function showWinner(winner){
     if (winner === 'player'){
         //Inc player score
+        totalGamesPlayed++;
         player1Score.innerHTML++;
         result.innerHTML = `<h1 class="text-win">You Win</h1>
-        <i class="fas fa-hand-${player2Choice} fa-10x"></i>
-        <p>Computer chose <strong>${player2Choice.charAt(0).toUpperCase()+ player2Choice.slice(1)}</strong></p>
+        <p>Total Games: ${totalGamesPlayed}</p>
+        <p>Draws: ${totalDraws}</p>
         `;
     } else if(winner === 'computer'){
         //inc computer score
+        totalGamesPlayed++;
         player2Score.innerHTML++;
         //show modal result
-        result.innerHTML = `<h1 class="text-lose">You lose</h1>
-        <i class="fas fa-hand-${player2Choice} fa-10x"></i>
-        <p>Computer chose <strong>${player2Choice.charAt(0).toUpperCase()+ player2Choice.slice(1)}</strong></p>
+        result.innerHTML = `<h1 class="text-win">Computer Wins</h1>
+        <p>Total Games: ${totalGamesPlayed}</p>
+        <p>Draws: ${totalDraws}</p>
         `;
     } else{
-        result.innerHTML = `<h1>It's A Draw</h1>
-        <i class="fas fa-hand-${player2Choice} fa-10x"></i>
-        <p>Computer chose <strong>${player2Choice.charAt(0).toUpperCase()+ player2Choice.slice(1)}</strong></p>
+        totalGamesPlayed++;
+        totalDraws++;
+        result.innerHTML = `<h1 class="text-win">It's Draw</h1>
+        <p>Total Games: ${totalGamesPlayed}</p>
+        <p>Draws: ${totalDraws}</p>
         `;
     }
     //show score
@@ -103,14 +112,14 @@ function showWinner(winner, player2Choice){
         : 
         <span class="player2_score">${player2Score.innerHTML}</span>
     </p>`;
-
-    modal.style.display = 'block';
 }
 
 //Restart Game
 function restartGame(){
     player1Score.innerHTML = 0;
     player2Score.innerHTML = 0;
+    totalGamesPlayed = 0;
+    totalDraws = 0;
     player1Name.innerHTML  = 'Player1';
     //changing innerHTML of score and player name upon restart as it was in the beginning of the game
     score.innerHTML = 
@@ -129,6 +138,7 @@ function restartGame(){
         <span class="player2_score">0</span>
     </p>`;
     restart.style.display = 'none';
+    modal.style.display = 'none';
 }
 
 function selectionPlayer2() {
