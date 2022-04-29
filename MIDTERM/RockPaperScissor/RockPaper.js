@@ -1,4 +1,6 @@
 const choices = document.querySelectorAll('.choice1');
+const choices2 = document.querySelector('.choices2')
+const displayChoices = document.querySelector('.displayChoices')
 const score = document.getElementById('score');
 const result = document.getElementById('result');
 const restart = document.querySelector('#restart');
@@ -24,11 +26,13 @@ function play(e) {
         restart.style.display = 'inline-block';
         modal.style.display = 'block';
         const player1Choice = e.target.id;
-        console.log(player1Choice)
+        const player1Image = e.target.src
+        console.log(player1Image)
         const player2Choice = selectionPlayer2();
-        console.log(player2Choice)
+        const player2Image = document.getElementById(player2Choice).src
+        console.log(player2Image)
         const winner = getWinner(player1Choice, player2Choice);
-        showWinner(winner, player2Choice);
+        showWinner(winner, player1Image, player2Image);
     }
     else if(player2Name.options[player2Name.selectedIndex].value === 'Player2') {
         
@@ -74,7 +78,14 @@ function getWinner(p, c){
     }
 }
 
-function showWinner(winner){
+function showWinner(winner, player1Image, player2Image){
+    
+    displayChoices.innerHTML = `
+        <img class='player1Image' src='${player1Image}'></img>
+        <span class='saparateLine'>|</span>
+        <img class='player2Image' src='${player2Image}'></img>
+        `;
+
     if (winner === 'player'){
         //Inc player score
         totalGamesPlayed++;
@@ -139,6 +150,7 @@ function restartGame(){
     </p>`;
     restart.style.display = 'none';
     modal.style.display = 'none';
+    displayChoices.style.display = 'none';
 }
 
 function selectionPlayer2() {
@@ -163,8 +175,19 @@ function changeName() {
     }
 }
 
+function displayPlayerChoice(e){
+    if(player2Name.options[player2Name.selectedIndex].value === 'Computer'){
+        displayChoices.innerHTML = `
+        <span class='player1Image'></span>
+        <span class='saparateLine'>|</span>
+        <span class='player2Image'></span>
+        `;
+    }
+}
+
 //Event listeners
 choices.forEach(choice => choice.addEventListener('click', play));
 window.addEventListener('click', clearModal);
 restart.addEventListener('click', restartGame);
 player1Name.addEventListener('click', changeName);
+player2Name.addEventListener('change', displayPlayerChoice)

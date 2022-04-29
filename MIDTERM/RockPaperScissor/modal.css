@@ -1,0 +1,25 @@
+.text-win {
+    animation-duration: 4s;
+    animation-name: FadeOut;
+    background-color: rgb(135, 135, 135);
+    color: black;
+    width: 300px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+@keyframes FadeOut {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+
+.player1Image, .player2Image {
+    max-width: 130px;
+    animation-duration: 4s;
+    animation-name: FadeOut;
+}

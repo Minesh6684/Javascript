@@ -73,17 +73,28 @@ body {
 #rock  {
     max-width: 150px;
     grid-area: rock;
+    /* margin: 0 5px 0 5px; */
+    /* border: 1px solid white; */
 }
 
 #paper {
     max-width: 150px;
     grid-area: paper;
+    /* margin: 0 5px 0 5px; */
+    /* border: 1px solid white; */
 }
 
 #scissors {
     max-width: 150px;
     grid-area: scissor;
+    /* margin: 0 5px 0 5px; */
+    /* border: 1px solid white; */
 }
+
+/* #rock:hover, #paper:hover, #scissors:hover {
+    max-width: 160px;
+    margin: 0;
+} */
 
 .choice1:hover{
     cursor: pointer;
@@ -92,6 +103,11 @@ body {
 .choice1:hover{
     color: rgb(101, 35, 146);
 }
+
+.saparateLine{
+    font-size: 130px;
+}
+
 @media(max-width: 700px){
     .choice1{
         font-size: 110px;
