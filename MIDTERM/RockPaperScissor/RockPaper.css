@@ -6,18 +6,16 @@
 
 body {
     font-family: 'Courier New', Courier, monospace;
-    line-height: 1.6;
+    line-height: 1.2;
     background: black;
     color: white;
-
 }
+
 .container{
-    /* max-width: 1100px;
-    margin: auto;
-    overflow: hidden; */
     padding: 0 2rem;
     text-align: center;
 }
+
 .restart-btn{
     display: none;
     color: white;
@@ -29,13 +27,29 @@ body {
     border: 2px solid yellow;
     border-radius: 5px;
 }
+
 .restart-btn:hover{
     background: black;
     color:#fff;
 }
+
 .header{
     text-align:center;
-    margin: 1rem 0;
+}
+
+
+
+.player1, .player2{
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.player1 {
+    padding-left: 400px;
+}
+
+.player2 {
+    padding-right: 400px;
 }
 
 .player1_name:hover {
@@ -49,52 +63,20 @@ body {
     color:#fff;
 }
 
-/* .score p:first-child{
-    background: rgb(195, 93, 182);
-}
-.score p:last-child{
-    background: rgb(50, 170, 222);
-} */
-
-/* .choices1 {
-    grid-area: player1_images;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 
-        'rock paper scissor';
-    grid-gap: 10px;
-} */
-
-/* .choices2 {
-    grid-area: player2_images;
-} */
-
 #rock  {
     max-width: 150px;
     grid-area: rock;
-    /* margin: 0 5px 0 5px; */
-    /* border: 1px solid white; */
 }
 
 #paper {
     max-width: 150px;
     grid-area: paper;
-    /* margin: 0 5px 0 5px; */
-    /* border: 1px solid white; */
 }
 
 #scissors {
     max-width: 150px;
     grid-area: scissor;
-    /* margin: 0 5px 0 5px; */
-    /* border: 1px solid white; */
 }
-
-/* #rock:hover, #paper:hover, #scissors:hover {
-    max-width: 160px;
-    margin: 0;
-} */
 
 .choice1:hover{
     cursor: pointer;
@@ -105,16 +87,5 @@ body {
 }
 
 .saparateLine{
-    font-size: 130px;
-}
-
-@media(max-width: 700px){
-    .choice1{
-        font-size: 110px;
-    }
-}
-@media(max-width: 500px){
-    .choice1{
-        font-size: 80px;
-    }
+    font-size: 200px;
 }

@@ -1,10 +1,15 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
 .text-win {
-    animation-duration: 4s;
+    animation-duration: 0.5s;
     animation-name: FadeOut;
     background-color: rgb(135, 135, 135);
     color: black;
     width: 300px;
-    margin: 10px auto;
+    margin: 40px auto 5px auto;
     border-radius: 5px;
 }
 
